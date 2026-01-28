@@ -1,0 +1,63 @@
+/* ================================
+   GLOBAL FONT SYSTEM
+   ================================ */
+
+ :root {
+    /* Headings / Titles */
+    --font-header: 'IBM Plex Mono', monospace;
+    /* Body / Paragraphs */
+    --font-body: 'IBM Plex Sans', sans-serif;
+    /* Optional mono (for stats, code, timeline IDs) */
+    --font-mono: 'IBM Plex Mono', monospace;
+}
+
+
+/* ================================
+     CSS RESET & BASE
+     ================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* ================================
+     BODY
+     ================================ */
+
+body {
+    font-family: var(--font-body);
+    background-color: #050505;
+    color: #ffffff;
+    max-width: 100%;
+    overscroll-behavior: none;
+}
+
+
+/* ================================
+     APP WRAPPER
+     ================================ */
+
+.app {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* ================================
+     OPTIONAL GLOBAL TEXT HELPERS
+     ================================ */
+
+.heading-font {
+    font-family: var(--font-header);
+}
+
+.mono-font {
+    font-family: var(--font-mono);
+}

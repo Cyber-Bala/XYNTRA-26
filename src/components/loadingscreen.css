@@ -1,0 +1,208 @@
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background-color: #05010d;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: var(--font-header);
+  overflow: hidden;
+}
+
+.loading-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(168, 85, 247, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168, 85, 247, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+}
+
+.scanning-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(168, 85, 247, 0.2);
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+  animation: scan-vertical 3s linear infinite;
+  z-index: 2;
+}
+
+@keyframes scan-vertical {
+  from { transform: translateY(-100%); }
+  to { transform: translateY(100vh); }
+}
+
+.loading-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+  max-width: 450px;
+}
+
+/* Logo Animation */
+.logo-glitch-container {
+  position: relative;
+  width: 280px;
+  height: 80px;
+}
+
+.loading-logo-box {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-indigo));
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 40px rgba(168, 85, 247, 0.4);
+  position: relative;
+  z-index: 5;
+}
+
+.loading-logo-letter {
+  font-size: 2rem;
+  font-weight: 900;
+  color: white;
+  letter-spacing: 0.1em;
+}
+
+.logo-ghost {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--accent-purple);
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  opacity: 0;
+  z-index: 4;
+}
+
+.glitch-active .logo-ghost:nth-child(2) {
+  opacity: 0.5;
+  transform: translate(-6px, 3px);
+  color: var(--accent-cyan);
+  background: transparent;
+  border: 2px solid var(--accent-cyan);
+}
+
+.glitch-active .logo-ghost:nth-child(3) {
+  opacity: 0.5;
+  transform: translate(6px, -3px);
+  color: #ff00ff;
+  background: transparent;
+  border: 2px solid #ff00ff;
+}
+
+/* Terminal UI */
+.boot-terminal {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.terminal-sup {
+  font-size: 0.65rem;
+  letter-spacing: 0.5em;
+  color: var(--accent-purple);
+  margin-bottom: 1.5rem;
+  opacity: 0.8;
+}
+
+.progress-value-wrap {
+  margin-bottom: 0.5rem;
+}
+
+.progress-percentage {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.main-progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 999px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent-purple);
+  transition: width 0.1s ease;
+}
+
+.progress-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: var(--accent-purple);
+  filter: blur(8px);
+  opacity: 0.6;
+}
+
+.terminal-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: monospace;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.status-cursor {
+  width: 8px;
+  height: 12px;
+  background: var(--accent-cyan);
+  animation: blink 0.8s infinite;
+}
+
+.status-text {
+  letter-spacing: 0.1em;
+}
+
+/* Corner Decorations */
+.corner-deco {
+  position: absolute;
+  font-family: monospace;
+  font-size: 0.6rem;
+  color: rgba(168, 85, 247, 0.3);
+  letter-spacing: 0.2em;
+}
+
+.tl { top: 2rem; left: 2rem; }
+.tr { top: 2rem; right: 2rem; }
+.bl { bottom: 2rem; left: 2rem; }
+.br { bottom: 2rem; right: 2rem; }
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.loading-screen.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}

@@ -1,0 +1,121 @@
+.footer {
+    padding: 5rem 1.5rem;
+    background: transparent;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3rem;
+}
+
+@media (min-width: 768px) {
+    .footer__content {
+        flex-direction: row;
+    }
+}
+
+.footer__brand {
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .footer__brand {
+        text-align: left;
+    }
+}
+
+.footer__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+    .footer__logo {
+        justify-content: flex-start;
+    }
+}
+
+.footer__logo-box {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 4px;
+    background: var(--accent-purple);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 900;
+    color: white;
+}
+
+.footer__logo-text {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: white;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+}
+
+.footer__desc {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    max-width: 20rem;
+}
+
+.footer__socials {
+    display: flex;
+    gap: 2rem;
+}
+
+.footer__social-link {
+    color: var(--text-muted);
+    transition: color 0.3s ease;
+}
+
+.footer__social-link:hover {
+    color: var(--accent-purple);
+}
+
+.footer__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+@media (min-width: 768px) {
+    .footer__nav {
+        flex-direction: row;
+        gap: 3rem;
+    }
+}
+
+.footer__nav-link {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer__nav-link:hover {
+    color: white;
+}
+
+.footer__copyright {
+    margin-top: 5rem;
+    text-align: center;
+    font-size: 0.625rem;
+    color: rgba(255, 255, 255, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    font-weight: 500;
+}
