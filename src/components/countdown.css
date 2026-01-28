@@ -1,0 +1,54 @@
+.countdown {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+
+/* Remove box feel completely */
+
+.time-box {
+    background: rgba(255, 255, 255, 0.07);
+    padding: 10px 14px;
+    min-width: 72px;
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: inset 0 0 0 rgba(255, 255, 255, 0);
+    transition: background 0.25s ease;
+}
+
+
+/* Big readable numbers */
+
+.time {
+    font-size: 2.4rem;
+    font-weight: 600;
+    color: #ede9fe;
+    line-height: 1;
+    letter-spacing: 0.02em;
+}
+
+
+/* Subtle labels */
+
+.label {
+    margin-top: 6px;
+    font-size: 0.7rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(243, 237, 237, 0.856);
+}
+
+
+/* Minimal separators */
+
+.colon {
+    font-size: 2rem;
+    color: rgba(124, 58, 237, 0.7);
+    margin-top: -10px;
+}

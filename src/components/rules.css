@@ -1,0 +1,218 @@
+.rules-section {
+    padding: 120px 0;
+    position: relative;
+    background-color: transparent;
+    margin: 20px;
+}
+
+.rules-sup {
+    font-family: var(--font-header);
+    font-size: 0.75rem;
+    color: var(--accent-purple);
+    letter-spacing: 0.5em;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+    /* text-align: center; */
+}
+
+.accent-glow {
+    color: var(--accent-purple);
+    text-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+}
+
+.rules-status-line {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    letter-spacing: 0.1em;
+}
+
+.status-blink-purple {
+    width: 6px;
+    height: 6px;
+    background-color: var(--accent-purple);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent-purple);
+    animation: blink 1.5s infinite;
+}
+
+.rules-status-text {
+    background: linear-gradient(90deg, #94a3b8 50%, var(--accent-indigo) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.rules-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 60px;
+}
+
+@media (max-width: 1024px) {
+    .rules-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .rules-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.rules-card {
+    position: relative;
+    background: rgba(10, 5, 20, 0.4);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 1.25rem;
+    padding: 2.5rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+}
+
+.rules-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(168, 85, 247, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(168, 85, 247, 0.1);
+}
+
+.rules-card-inner {
+    position: relative;
+    z-index: 5;
+}
+
+.rules-icon-wrap {
+    width: 3.5rem;
+    height: 3.5rem;
+    background: rgba(168, 85, 247, 0.1);
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.rules-icon-svg-container {
+    width: 1.75rem;
+    height: 1.75rem;
+    color: var(--accent-purple);
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.rules-card:hover .rules-icon-svg-container {
+    color: white;
+    filter: drop-shadow(0 0 8px var(--accent-purple));
+}
+
+.icon-pulse-ring {
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--accent-purple);
+    border-radius: 0.75rem;
+    opacity: 0.3;
+    animation: icon-pulse 2s infinite ease-out;
+}
+
+@keyframes icon-pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+.rules-card-title {
+    font-family: var(--font-header);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.02em;
+}
+
+.rules-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.rules-list li {
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: #94a3b8;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+    display: flex;
+    gap: 10px;
+    transition: color 0.3s ease;
+}
+
+.rules-card:hover .rules-list li {
+    color: #e2e8f0;
+}
+
+.rule-bullet {
+    color: var(--accent-purple);
+    font-weight: bold;
+}
+
+
+/* Card Decor */
+
+.card-edge-tl {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border-top: 2px solid var(--accent-purple);
+    border-left: 2px solid var(--accent-purple);
+    opacity: 0.4;
+}
+
+.card-edge-br {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    border-bottom: 2px solid var(--accent-indigo);
+    border-right: 2px solid var(--accent-indigo);
+    opacity: 0.4;
+}
+
+.card-scan-beam {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.05), transparent);
+    transform: skewX(-20deg);
+    pointer-events: none;
+}
+
+.rules-card:hover .card-scan-beam {
+    animation: rules-shine 2s infinite;
+}
+
+@keyframes rules-shine {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 150%;
+    }
+}

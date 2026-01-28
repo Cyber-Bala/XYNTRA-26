@@ -1,0 +1,130 @@
+/* === RUNTIME TERMINAL === */
+
+.runtime-terminal {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    /* background: linear-gradient( 145deg, rgba(124, 58, 237, 0.22), rgba(0, 0, 0, 0.88)); */
+    backdrop-filter: blur(16px);
+    box-shadow: inset 0 0 0 1px rgba(124, 58, 237, 0.28), 0 0 40px rgba(124, 58, 237, 0.15);
+    display: flex;
+    flex-direction: column;
+    font-family: "Courier New", monospace;
+    transition: box-shadow 0.35s ease, transform 0.35s ease;
+    margin-top: 45px;
+    margin-left: 25px;
+}
+
+
+/* Hover glow (subtle) */
+
+.runtime-terminal:hover {
+    box-shadow: inset 0 0 0 1px rgba(124, 58, 237, 0.4), 0 0 70px rgba(124, 58, 237, 0.25);
+    /* transform: scale(1.05); */
+}
+
+
+/* Header */
+
+.runtime-header {
+    height: 38px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 0 16px;
+    background: rgba(6, 6, 12, 0.9);
+    border-bottom: 1px solid rgba(124, 58, 237, 0.3);
+}
+
+.runtime-dots {
+    display: flex;
+    gap: 7px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
+
+.dot.red {
+    background: #ff5f56;
+}
+
+.dot.yellow {
+    background: #ffbd2e;
+}
+
+.dot.green {
+    background: #27c93f;
+}
+
+.runtime-title {
+    font-size: 0.75rem;
+    color: #ddd6fe;
+    letter-spacing: 0.18em;
+}
+
+
+/* Body */
+
+.runtime-body {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+}
+
+
+/* Sidebar */
+
+.runtime-meta {
+    padding: 18px;
+    border-right: 1px solid rgba(124, 58, 237, 0.25);
+    background: rgba(12, 12, 22, 0.6);
+}
+
+.meta-box {
+    margin-bottom: 18px;
+}
+
+.meta-label {
+    font-size: 0.75rem;
+    color: #a78bfa;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+}
+
+.meta-value {
+    font-size: 0.95rem;
+    color: #f5f3ff;
+    margin-top: 6px;
+    display: block;
+}
+
+
+/* Code area */
+
+.runtime-code {
+    padding: 22px;
+    font-size: 1.05rem;
+    /* BIGGER & readable */
+    line-height: 1.8;
+    color: #f5f3ff;
+    white-space: pre-wrap;
+    text-shadow: 0 0 14px rgba(124, 58, 237, 0.3);
+}
+
+
+/* Cursor */
+
+.cursor {
+    margin-left: 4px;
+    animation: blink 1.1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+    to {
+        visibility: hidden;
+    }
+}

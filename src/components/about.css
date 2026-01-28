@@ -1,0 +1,111 @@
+.about-sticky-wrapper {
+    height: 150vh;
+    /* Gives room for scroll effects */
+    /* background: #000; */
+    position: relative;
+}
+
+.about-sticky-content {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+
+/* Technical Grid Background */
+
+.grid-overlay {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(145, 99, 224, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(145, 99, 224, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: 0;
+}
+
+.about__layout {
+    display: flex;
+    gap: 80px;
+    max-width: 1200px;
+    padding: 0 40px;
+    z-index: 1;
+}
+
+.about__visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.vertical-line {
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, #9163e0, transparent);
+}
+
+.scrolling-numbers {
+    display: flex;
+    flex-direction: column;
+    font-family: monospace;
+    font-size: 0.8rem;
+    color: #9163e0;
+    opacity: 0.3;
+    margin-top: 20px;
+}
+
+.about__tag {
+    color: #9163e0;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.about__hero-title {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    color: #fff;
+    line-height: 0.9;
+    margin-bottom: 30px;
+}
+
+.about__description {
+    font-size: 1.2rem;
+    color: #aaa;
+    max-width: 1200px;
+    line-height: 1.6;
+}
+
+.highlight {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(145, 99, 224, 0.8);
+}
+
+.about__footer-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.neon-stat {
+    display: flex;
+    flex-direction: column;
+    border-left: 3px solid #9163e0;
+    padding-left: 20px;
+}
+
+.n-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #fff;
+}
+
+.n-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #9163e0;
+}
