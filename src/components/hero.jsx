@@ -43,7 +43,7 @@ export default function Hero() {
             <div className="cta-group">
               <Countdown targetDate="2026-03-17T09:00:00" />
               <button className="reg-btn hero-btn">Register Now</button>
-              <button className="view-btn hero-btn">View Rewards ⟶</button>
+              <button className="view-btn hero-btn">View Timeline ⟶</button>
             </div>
           </motion.div>
         </div>

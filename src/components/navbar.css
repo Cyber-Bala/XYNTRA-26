@@ -5,7 +5,7 @@
     width: 100%;
     z-index: 999;
     transition: all 0.3s ease;
-    padding: 2rem 0;
+    padding: 1.5rem 0;
 }
 
 .navbar--scrolled {
@@ -16,8 +16,8 @@
 }
 
 .navbar__container {
-    max-width: 1280px;
-    margin: 0 auto;
+    max-width: 100%;
+    /* margin: 0 auto; */
     padding: 0 1.5rem;
     display: flex;
     align-items: center;
@@ -25,6 +25,7 @@
 }
 
 .navbar__logo-group {
+    margin-left: 0px;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -42,6 +43,16 @@
     font-weight: 900;
     color: white;
     transition: transform 0.3s ease;
+}
+
+.rec-logo {
+    width: 150px;
+    height: 40px;
+}
+
+.ieee-logo {
+    width: 150px;
+    height: 50px;
 }
 
 .navbar__logo-group:hover .navbar__logo-icon {

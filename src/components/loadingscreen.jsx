@@ -1,36 +1,43 @@
-import React, { useEffect, useState } from "react";
-import "./LoadingScreen.css";
+import './loadingscreen.css';
 
-export default function LoadingScreen({ onComplete }) {
-  const TAGLINE = "CODE · CREATE · CONQUER";
-  const [text, setText] = useState("");
-  const [done, setDone] = useState(false);
+const Loadingscreen = () => {
+    // 31 fur spans as per the provided snippet
+    const furSpans = Array.from({ length: 31 }, (_, i) => (
+        <span key={i} className={`fur-${i + 1}`}></span>
+    ));
 
-  useEffect(() => {
-    let i = 0;
-    const interval = setInterval(() => {
-      setText(TAGLINE.slice(0, i + 1));
-      i++;
-      if (i === TAGLINE.length) {
-        clearInterval(interval);
-        setTimeout(() => {
-          setDone(true);
-          setTimeout(onComplete, 500);
-        }, 600);
-      }
-    }, 40);
+    // 28 lamp spans as per the provided snippet
+    const lampSpans = Array.from({ length: 28 }, (_, i) => (
+        <span key={i} className={`lamp-${i + 1}`}></span>
+    ));
 
-    return () => clearInterval(interval);
-  }, [onComplete]);
+    return (
+        <div id="container" className="intro-view">
+            {/* Sequence Stage 1: Brand Text */}
+            <div className="brand-stage">
+                <h1 className="brand-text">XYNTRA</h1>
+            </div>
 
-  return (
-    <div className={`statement-loader ${done ? "fade-out" : ""}`}>
-  <div className="ambient-bg" />
+            {/* Sequence Stage 2: The Intro X */}
+            <div className="netflix-stage">
+                <div className="netflixintro" letter="X">
+                    <div className="helper-1">
+                        <div className="effect-brush">
+                            {furSpans}
+                        </div>
+                        <div className="effect-lumieres">
+                            {lampSpans}
+                        </div>
+                    </div>
+                    <div className="helper-2">
+                        <div className="effect-brush">
+                            {furSpans}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
 
-      <div className="statement-center">
-        <h1 className="statement-title">XYNTRA</h1>
-        <p className="statement-tagline">{text}</p>
-      </div>
-    </div>
-  );
-}
+export default Loadingscreen;

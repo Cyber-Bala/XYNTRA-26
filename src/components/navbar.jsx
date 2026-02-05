@@ -1,5 +1,7 @@
   import React, { useState, useEffect } from 'react';
   import { motion, useScroll } from 'framer-motion';
+  import reclogo from "../assets/college.png";
+  import ieeelogo from "../assets/ieee_cs.png";
   import './navbar.css';
 
   const Navbar = () => {
@@ -15,7 +17,7 @@
     const navItems = [
       { name: 'About', href: '#about' },
       { name: 'Domains', href: '#domains' },
-      { name: 'Timeline', href: '#timeline' },
+      // { name: 'Timeline', href: '#timeline' },
       { name: 'Rewards', href: '#rewards' },
       { name: 'Rules', href: '#rules' },
     ];
@@ -30,7 +32,9 @@
         <div className="navbar__container">
           <a href="/" className="navbar__logo-group">
             {/* <div className="navbar__logo-icon">X</div> */}
-            <span className="navbar__logo-text">XYNTRA</span>
+            {/* <span className="navbar__logo-text">XYNTRA</span> */}
+            <img src={reclogo} alt="reclogo" className='rec-logo'/>
+            <img src={ieeelogo} alt="reclogo" className='ieee-logo'/>
           </a>
 
           <div className="navbar__links-desktop">
@@ -39,7 +43,7 @@
                 {item.name}
               </a>
             ))}
-            <button className="navbar__cta">Register Now</button>
+            {/* <button className="navbar__cta">Register Now</button> */}
           </div>
 
           <button className="navbar__mobile-toggle">
