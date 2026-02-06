@@ -4,15 +4,16 @@ import { AnimatePresence } from "framer-motion";
 import Navbar from "./components/navbar";
 import Hero from "./components/hero";
 import About from "./components/about";
-import DomainsSection from "./components/domain";
+import {DomainsSection} from "./components/domain";
 import Timeline from "./components/timeline";
 import RewardsSection from "./components/reward";
 import SponsorsSection from "./components/sponsor";
 import Footer from "./components/footer";
-import FAQ from "./components/FAQ";
+import {FAQ} from "./components/FAQ";
 import StarBackground from "./components/starbackground";
 import Rules from "./components/rules";
 import Loadingscreen from "./components/loadingscreen";
+import FAQSection from "./components/FAQ1.tsx"
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);
@@ -71,7 +72,7 @@ function App() {
             <RewardsSection />
             <Rules />
             <SponsorsSection />
-            <FAQ />
+            <FAQSection />
             <Footer />
           </div>
         )}

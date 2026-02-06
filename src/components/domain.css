@@ -1,40 +1,157 @@
-/* ROOT FONTS */
+/* ========================= */
+
+
+/* ROOT FONTS                */
+
+
+/* ========================= */
 
 :root {
-    --font-heading: 'IBM Plex Sans', sans-serif;
-    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-heading: "IBM Plex Sans", sans-serif;
+    --font-body: "IBM Plex Sans", sans-serif;
 }
 
-
-/* SECTION */
-
-.domains-section {
-    padding: 120px 0;
-    background-color: transparent;
-    position: relative;
-    z-index: 10;
-    margin: 25px;
+body {
     font-family: var(--font-body);
 }
 
 
-/* GRID */
+/* ========================= */
+
+
+/* SECTION                   */
+
+
+/* ========================= */
+
+.domains-section {
+    position: relative;
+    min-height: 100vh;
+    /* padding: 120px 0; */
+    margin: 0;
+    width: 100%;
+    background-color: transparent;
+    z-index: 10;
+    padding: 25px;
+    /* margin: 25px; */
+    overflow: hidden;
+    font-family: var(--font-body);
+}
+
+
+/* background layer now fully transparent to show global black + stars */
+
+.domains-bg {
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    pointer-events: none;
+}
+
+.domains-container {
+    position: relative;
+    z-index: 10;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.domains-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+    .domains-header {
+        margin-bottom: 5rem;
+    }
+}
+
+.domains-pill {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    border-radius: 999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    color: #e9d5ff;
+    background: rgba(168, 85, 247, 0.1);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+.domains-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    font-family: "IBM Plex Mono", "IBM Plex Sans", Arial, sans-serif !important;
+    letter-spacing: -0.03em;
+}
+
+@media (min-width: 768px) {
+    .domains-title {
+        font-size: 3.75rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .domains-title {
+        font-size: 4.5rem;
+    }
+}
+
+.domains-subtitle {
+    color: #94a3b8;
+    font-size: 1.35rem;
+    max-width: 32rem;
+    margin: 0 auto 2.5rem auto;
+    font-family: "IBM Plex Sans", Arial, sans-serif !important;
+    letter-spacing: 0.01em;
+}
+
+
+/* ========================= */
+
+
+/* GRID + ITEM SPACING       */
+
+
+/* ========================= */
 
 .domains-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: 9rem 9rem;
+    /* more space between cubes */
+    justify-content: center;
+    /* keep grid centered */
+    transform: translateX(-20px);
 }
 
-@media (max-width: 1024px) {
+.domains-grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    padding: 0.75rem;
+}
+
+@media (max-width: 1200px) {
     .domains-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem 3rem;
     }
 }
 
 @media (max-width: 768px) {
     .domains-grid {
         grid-template-columns: 1fr;
+        gap: 2.25rem;
+    }
+    .domains-grid-item {
+        justify-content: center;
     }
 }
 
@@ -42,273 +159,300 @@
 /* ========================= */
 
 
-/* 3D CARD CONTAINER */
+/* CARD + CUBE WRAPPER       */
 
 
 /* ========================= */
 
-.domain-card-v3-container {
-    height: 420px;
-    perspective: 1200px;
-    /* 🔑 CRITICAL */
-    transform-style: preserve-3d;
-    will-change: transform;
-}
-
-
-/* INNER */
-
-.domain-card-v3-inner {
+.domain-card-wrapper {
     position: relative;
     width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.9s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: flex;
+    justify-content: center;
 }
 
-
-/* Hover */
-
-.domain-card-v3-container:hover .domain-card-v3-inner {
-    transform: rotateY(180deg) translateZ(0);
+.domain-card-active {
+    z-index: 10;
 }
 
+.domain-card-glow {
+    pointer-events: none;
+    position: absolute;
+    inset: -1.5rem;
+    border-radius: 34px;
+    opacity: 0.35;
+    filter: blur(16px);
+    transition: opacity 0.45s ease;
+}
 
-/* ========================= */
+.domain-card-wrapper:hover .domain-card-glow {
+    opacity: 0.8;
+}
 
-
-/* CARD FACES */
-
-
-/* ========================= */
-
-.card-face {
+.domain-card-shadow {
+    pointer-events: none;
     position: absolute;
     inset: 0;
-    background: #18181c;
-    border-radius: 1.25rem;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    padding: 2.5rem 2rem;
-    backface-visibility: hidden;
-    transform-style: preserve-3d;
-    /* 🔑 TEXT SHARPNESS FIX */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    /* 🔑 GPU STABILITY */
-    transform: translateZ(0);
-    overflow: visible;
+    border-radius: 34px;
+    box-shadow: 0 40px 120px rgba(0, 0, 0, 0.9);
 }
 
-
-/* FRONT */
-
-.card-front {
-    z-index: 2;
-}
-
-
-/* BACK */
-
-.card-back {
-    transform: rotateY(180deg) translateZ(0);
-}
-
-
-/* ========================= */
-
-
-/* CONTENT */
-
-
-/* ========================= */
-
-.card-top-accent {
-    height: 100%;
-    width: 100%;
-}
-
-.card-top-accent-wrap {
-    position: absolute;
-    top: 0;
-    /* ⬅ inside the border */
-    left: 4px;
-    right: 1px;
-    height: 6px;
-    overflow: hidden;
-    border-top-left-radius: calc(1.25rem - 1px);
-    border-top-right-radius: calc(1.25rem - 1px);
-    z-index: 5;
-}
-
-.card-number-badge {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.4);
-}
-
-.domain-icon-box {
+.domain-card-perspective {
     position: relative;
-    width: 5rem;
-    height: 5rem;
-    border-radius: 1.1rem;
-    background: #111827;
-    border: 1px solid currentColor;
+    height: 24rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: inherit;
-    z-index: 1;
-    margin-bottom: 5px;
+    perspective: 1400px;
 }
 
-.domain-icon-box::before {
-    content: "";
+
+/* ========================= */
+
+
+/* CUBE FACES                */
+
+
+/* ========================= */
+
+.cube-face {
     position: absolute;
-    inset: -1px;
-    border-radius: inherit;
-    border: 1px solid currentColor;
-    box-shadow: 0 0 6px currentColor, 0 0 14px currentColor;
-    opacity: 0.3;
-    pointer-events: none;
+    inset: 0;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: linear-gradient(to bottom right, #050514, #02010a);
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+    overflow: hidden;
 }
 
+.cube-face-front {
+    background: linear-gradient(to bottom right, #08081a, #050514, #02010a);
+}
 
-/* .domain-icon-box::after {
-    content: "";
+.cube-face-inner-border {
     position: absolute;
-    inset: -12px;
-    border-radius: 1.4rem;
-    background: currentColor;
-    opacity: 0.18;
-    filter: blur(20px);
-    z-index: -1;
-    pointer-events: none;
-} */
-
-.icon-glyph-svg-wrap svg {
-    width: 2.2rem;
-    height: 2.2rem;
-    stroke: currentColor;
+    inset: 0;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-
-/* .icon-glyph svg {
-    width: 2.5rem;
-    height: 2.5rem;
-    stroke: currentColor;
-} */
-
-.icon-glyph-svg-wrap {
-    width: 2.5rem;
-    height: 2.5rem;
-    z-index: 2;
-    transition: all 0.4s ease;
-}
-
-.icon-inner-glow {
+.cube-face-inner-bg {
     position: absolute;
-    inset: 6px;
-    border-radius: 0.75rem;
-    background: currentColor;
-    opacity: 0.15;
-    filter: blur(8px);
-    pointer-events: none;
+    inset: 10px;
+    border-radius: 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.06), transparent);
 }
 
-.domain-card-v3-container:hover .icon-glyph-svg-wrap {
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 10px currentColor);
-}
-
-.domain-card-v3-container:hover .domain-icon-box::before {
-    opacity: 0.7;
+.cube-face-content {
+    position: relative;
+    height: 100%;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
 }
 
 
-/* .icon-inner-glow {
-    position: absolute;
-    inset: 0.75rem;
-    border-radius: 0.75rem;
-    filter: blur(12px);
-    opacity: 0.6;
-} */
+/* ========================= */
 
-.icon-glyph-svg-wrap {
-    width: 2.5rem;
-    height: 2.5rem;
-    z-index: 2;
-    transition: all 0.4s ease;
+
+/* FRONT FACE CONTENT        */
+
+
+/* ========================= */
+
+.cube-icon-wrapper {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 1.25rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
-.domain-card-v3-container:hover .icon-glyph-svg-wrap {
-    transform: scale(1.1);
-    filter: drop-shadow(0 0 10px currentColor);
-}
-
-.icon-side-dot {
-    position: absolute;
-    right: -4px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: currentColor;
-    box-shadow: 0 0 10px currentColor;
-}
-
-
-/* TEXT */
-
-.domain-category {
+.cube-subtitle {
     font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.cube-title {
+    font-size: 1.4rem;
+    line-height: 1.3;
+    font-weight: 700;
+    color: #ffffff;
     margin-bottom: 0.75rem;
 }
 
-.domain-title-v3 {
-    font-size: 1.7rem;
-    font-weight: 700;
-    letter-spacing: -0.01em;
-    margin-bottom: 1.25rem;
-    color: var(--accent-purple);
+@media (min-width: 768px) {
+    .cube-title {
+        font-size: 1.6rem;
+    }
 }
 
-.domain-title {
-    display: block;
-    text-align: center;
-    font-family: 'IBM Plex Mono', 'IBM Plex Sans', Arial, sans-serif !important;
-    font-size: 3rem;
-    font-weight: 800;
-    color: var(--accent-purple);
-    margin: 0 auto 1.5rem auto;
-    letter-spacing: -0.03em;
+.cube-face-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 0.6rem;
 }
 
-.domain-desc-v3 {
-    font-size: 0.95rem;
+.cube-face-description {
+    font-size: 0.9rem;
     color: #94a3b8;
     line-height: 1.65;
 }
 
-.hover-hint {
-    margin-top: 20px;
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    color: rgba(255, 255, 255, 0.25);
+.cube-footer {
+    margin-top: auto;
+    padding-top: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.7rem;
 }
 
-.title-line {
-    display: block;
-    text-align: center;
-    font-family: 'IBM Plex Sans', Arial, sans-serif !important;
-    font-size: 1.35rem;
-    font-weight: 500;
-    color: #94a3b8;
-    margin: 0 auto 2.5rem auto;
-    letter-spacing: 0.01em;
+.cube-footer-hint {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.cube-footer-tag {
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+
+/* ========================= */
+
+
+/* RIGHT FACE                */
+
+
+/* ========================= */
+
+.cube-face-right {
+    background: linear-gradient(to bottom right, #050514, #02010a);
+}
+
+.cube-face-border {
+    position: absolute;
+    inset: 0;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cube-face-content-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.cube-image-outer {
+    flex: 1;
+    border-radius: 1.25rem;
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.cube-image-inner {
+    width: 95%;
+    height: 85%;
+    border-radius: 1.25rem;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cube-image {
+    max-width: 95%;
+    max-height: 90%;
+    object-fit: contain;
+    opacity: 0.9;
+}
+
+
+/* ========================= */
+
+
+/* BACK + LEFT LIST FACES    */
+
+
+/* ========================= */
+
+.cube-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    row-gap: 0.5rem;
+}
+
+.cube-list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.cube-list-dot {
+    margin-top: 3px;
+    width: 0.375rem;
+    height: 0.375rem;
+    border-radius: 999px;
+}
+
+.cube-list-bar {
+    margin-top: 3px;
+    width: 1rem;
+    height: 0.375rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+
+/* ========================= */
+
+
+/* TOP / BOTTOM              */
+
+
+/* ========================= */
+
+.cube-face-top {
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.08), transparent);
+    border-color: rgba(255, 255, 255, 0.14);
+}
+
+.cube-top-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 1.5rem;
+    background: rgba(255, 255, 255, 0.06);
+    mix-blend-mode: screen;
+}
+
+.cube-face-bottom {
+    background: linear-gradient(to top right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.95));
+    border-color: rgba(0, 0, 0, 0.6);
+}
+
+.cube-bottom-overlay {
+    position: absolute;
+    inset: 0;
+    border-radius: 1.5rem;
+    background: rgba(0, 0, 0, 0.7);
 }

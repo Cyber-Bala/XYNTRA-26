@@ -2,6 +2,8 @@
    GLOBAL FONT SYSTEM
    ================================ */
 
+@tailwind components;
+@tailwind utilities;
  :root {
     /* Headings / Titles */
     --font-header: 'IBM Plex Mono', monospace;
