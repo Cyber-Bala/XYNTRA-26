@@ -5,6 +5,7 @@ import macbook from "../assets/macbook3.png";
 import Terminal from "./terminal";
 import Countdown from "./countdown";
 import StarBackground from "./starbackground";
+import bgvideo from "../assets/background-video.mp4"
 
 import "./hero.css";
 
@@ -17,8 +18,20 @@ export default function Hero() {
 
   return (
     <section className="hero">
-      <div className="hero-bg" />
+      <div className="hero-bg">
+  <video
+    autoPlay
+    loop
+    muted
+    playsInline
+    className="bg-video"
+  >
+    <source src={bgvideo} type="video/mp4" />
+  </video>
+</div>
+
       <StarBackground className="hero-stars" />
+
 
       <div className="section-container manifesto-container">
         <div className="manifesto-content">
