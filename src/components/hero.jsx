@@ -5,7 +5,8 @@ import macbook from "../assets/macbook3.png";
 import Terminal from "./terminal";
 import Countdown from "./countdown";
 import StarBackground from "./starbackground";
-import bgvideo from "../assets/background-video.mp4"
+import bgvideo from "../assets/backgound-vid.mp4";
+
 
 import "./hero.css";
 
