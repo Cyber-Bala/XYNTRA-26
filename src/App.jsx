@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { AnimatePresence } from "framer-motion";
 
 import Navbar from "./components/navbar";
 import Hero from "./components/hero";
@@ -12,47 +11,30 @@ import Footer from "./components/footer";
 import {FAQ} from "./components/FAQ";
 import StarBackground from "./components/starbackground";
 import Rules from "./components/rules";
-import Loadingscreen from "./components/loadingscreen";
 import FAQSection from "./components/FAQ1.tsx"
+import IntroLoader from './components/IntroLoader';
+import CinematicIntro from './components/CinematicIntro';
 
 function App() {
-  const [showIntro, setShowIntro] = useState(true);
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [showCinematic, setShowCinematic] = useState(false);
 
-  useEffect(() => {
-    // Start fade-out
-    const transitionTimer = setTimeout(() => {
-      setIsTransitioning(true);
-    }, 4000);
+  const handleLoaderComplete = () => {
+    setLoading(false);
+    setShowCinematic(true);
+  };
 
-    // Remove intro completely
-    const swapTimer = setTimeout(() => {
-      setShowIntro(false);
-    }, 4800);
-
-    return () => {
-      clearTimeout(transitionTimer);
-      clearTimeout(swapTimer);
-    };
-  }, []);
+  const handleCinematicComplete = () => {
+    setShowCinematic(false);
+  };
 
   return (
     <div className="app">
-      <AnimatePresence mode="wait">
-        {/* 🔥 LOADING SCREEN */}
-        {showIntro && (
-          <div
-            className={`transition-wrapper ${
-              isTransitioning ? "fade-exit-active" : ""
-            }`}
-          >
-            <Loadingscreen />
-          </div>
-        )}
+      {loading && <IntroLoader onComplete={handleLoaderComplete} />}
+      {showCinematic && <CinematicIntro onComplete={handleCinematicComplete} />}
 
-        {/* 🔥 MAIN SITE */}
-        {!showIntro && (
-          <div key="site">
+      {!loading && !showCinematic && (
+        <>
             <StarBackground />
 
             {/* Optional Aurora */}
@@ -74,9 +56,8 @@ function App() {
             <SponsorsSection />
             <FAQSection />
             <Footer />
-          </div>
+          </>
         )}
-      </AnimatePresence>
     </div>
   );
 }

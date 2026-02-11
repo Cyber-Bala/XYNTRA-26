@@ -1,0 +1,165 @@
+/* CinematicIntro.css */
+
+.cinematic-intro-container {
+    position: fixed;
+    inset: 0;
+    background-color: #000000;
+    /* Deep black */
+    z-index: 9998;
+    /* Below loader (9999) but above content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    opacity: 0;
+    /* Started hidden, controlled by GSAP */
+    perspective: 1000px;
+}
+
+/* Starfield */
+.starfield {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+    animation: drift 20s linear infinite;
+}
+
+@keyframes drift {
+    from {
+        transform: translateZ(0) translateY(0);
+    }
+
+    to {
+        transform: translateZ(100px) translateY(-50px);
+    }
+}
+
+/* Energy Lines */
+.energy-lines-wrapper {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.energy-lines {
+    width: 60%;
+    height: 60%;
+    opacity: 0.6;
+}
+
+.line-path {
+    fill: none;
+    stroke: rgba(124, 58, 237, 0.4);
+    /* Subtle purple */
+    stroke-width: 0.5;
+    vector-effect: non-scaling-stroke;
+    filter: drop-shadow(0 0 8px rgba(124, 58, 237, 0.6));
+}
+
+/* Typography */
+.content-center {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.cinematic-title {
+    font-family: 'Rajdhani', 'Orbitron', sans-serif;
+    /* Tech font */
+    font-size: clamp(4rem, 10vw, 8rem);
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.1em;
+    margin: 0;
+    position: relative;
+    /* text-shadow: 0 0 30px rgba(139, 92, 246, 0.3); */
+    display: inline-block;
+}
+
+.char {
+    display: inline-block;
+    transform-origin: center bottom;
+}
+
+/* Light Sweep */
+.light-sweep {
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.8),
+            transparent);
+    transform: skewX(-20deg);
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    opacity: 0;
+}
+
+/* Reflection */
+.reflection {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    transform: scaleY(-0.4) translateY(-10px);
+    /* Flip and squish */
+    opacity: 0.15;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: blur(4px);
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Separator Line */
+.separator-line {
+    width: 0%;
+    /* animate to 100% via CSS keyframe or GSAP if needed? we used tagline reveal mainly */
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.8), transparent);
+    box-shadow: 0 0 10px rgba(124, 58, 237, 0.5);
+    animation: expandLine 1.5s ease-out forwards 4s;
+    /* Delay to match timelines */
+}
+
+@keyframes expandLine {
+    to {
+        width: 60%;
+    }
+}
+
+/* Tagline */
+.cinematic-tagline {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: rgba(255, 255, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin: 0;
+    font-weight: 300;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
