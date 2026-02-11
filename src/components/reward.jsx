@@ -1,6 +1,7 @@
 import { motion, useMotionValue, useMotionTemplate } from 'framer-motion';
-import { Trophy, Medal, Award, Cpu, Target } from 'lucide-react';
+import { Crown, Gem, Target, Cpu } from 'lucide-react';
 import './reward.css';
+// import RewardsSection from './RewardsSection';
 
 const prizesData = [
   {
@@ -11,7 +12,7 @@ const prizesData = [
     desc: "Dominance asserted. The ultimate champion of the Xyntra hackathon.",
     details: ['Winner\'s Trophy', 'Gold Medal', 'Exclusive NFT', 'Dev Kit'],
     color: '#FFD700', // Gold
-    icon: Trophy,
+    icon: Crown,
     accent: 'gold'
   },
   {
@@ -22,7 +23,7 @@ const prizesData = [
     desc: "Excellence in execution. A force to be reckoned with.",
     details: ['Runner-up Trophy', 'Silver Medal', 'Premium Swag', 'Cloud Credits'],
     color: '#C0C0C0', // Silver
-    icon: Medal,
+    icon: Gem,
     accent: 'silver'
   },
   {
@@ -33,7 +34,7 @@ const prizesData = [
     desc: "Innovation foundation. Building the future, one block at a time.",
     details: ['Bronze Medal', 'Standard Swag', 'Tech Vouchers'],
     color: '#CD7F32', // Bronze
-    icon: Award,
+    icon: Target,
     accent: 'bronze'
   }
 ];
@@ -113,7 +114,7 @@ const PrizeCard = ({ prize }) => {
 
 const RewardsSection = () => {
   return (
-    <div className="prizes-section-container">
+    <div className="prizes-section-container" id="rewards">
       <div className="section-header">
         <motion.div
           initial={{ opacity: 0, y: -20 }}

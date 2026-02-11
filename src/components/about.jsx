@@ -53,7 +53,7 @@ const AboutSection = () => {
   const title = "XYNTRA 2026";
 
   return (
-    <section className="about-sticky-wrapper" ref={containerRef}>
+    <section className="about-sticky-wrapper" ref={containerRef} id="about">
       <motion.div style={{ scale, opacity }} className="about-sticky-content">
         {/* Background Grid */}
         <div className="grid-overlay" />
