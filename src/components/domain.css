@@ -96,7 +96,7 @@ body {
 
 @media (min-width: 1024px) {
     .domains-title {
-        font-size: 4.5rem;
+        font-size: 3.5rem;
     }
 }
 
@@ -121,11 +121,11 @@ body {
 .domains-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 9rem 9rem;
-    /* more space between cubes */
+    gap: 4rem 2rem;
+    /* Reduced from 9rem to 4rem for better fit */
     justify-content: center;
     /* keep grid centered */
-    transform: translateX(-20px);
+    transform: translateX(0);
 }
 
 .domains-grid-item {
@@ -135,20 +135,56 @@ body {
     padding: 0.75rem;
 }
 
+
+/* Laptop / Desktop scaling fix */
+
+@media (max-width: 1500px) {
+    .domains-grid-item {
+        transform: scale(0.85);
+        margin: -20px 0;
+    }
+    .domains-grid {
+        gap: 2rem;
+    }
+}
+
 @media (max-width: 1200px) {
     .domains-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 2.5rem 3rem;
+        gap: 3rem 1.5rem;
+    }
+    .domains-grid-item {
+        transform: scale(0.8);
+        margin: -30px 0;
+        /* Tighten vertical space */
     }
 }
 
 @media (max-width: 768px) {
     .domains-grid {
         grid-template-columns: 1fr;
-        gap: 2.25rem;
+        gap: 3rem;
+        /* Increase gap to separate scaled items */
+        margin-top: -2rem;
     }
     .domains-grid-item {
         justify-content: center;
+        transform: scale(0.85);
+        /* Mobile scale */
+        margin: -30px 0;
+        /* Pull items closer vertically */
+    }
+}
+
+@media (max-width: 480px) {
+    .domains-grid-item {
+        transform: scale(0.75);
+        /* Smaller mobile scale */
+        margin: -50px 0;
+        /* More negative margin */
+    }
+    .domains-grid {
+        gap: 1rem;
     }
 }
 

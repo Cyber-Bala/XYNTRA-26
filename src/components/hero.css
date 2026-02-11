@@ -432,9 +432,6 @@
         /* Slightly tighter padding */
         max-width: 260px;
     }
-    .view-btn {
-        /* Ensure view button has same width logic */
-    }
     .manifesto-hud {
         display: none;
     }
