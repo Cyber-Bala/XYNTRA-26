@@ -109,3 +109,63 @@
     letter-spacing: 2px;
     color: #9163e0;
 }
+
+
+/* ================= MOBILE RESPONSIVENESS ================= */
+
+@media (max-width: 768px) {
+    .about-sticky-wrapper {
+        height: auto;
+        min-height: 100vh;
+    }
+    .about-sticky-content {
+        position: relative;
+        height: auto;
+        padding: 60px 0;
+        align-items: flex-start;
+    }
+    .about__layout {
+        flex-direction: column;
+        gap: 30px;
+        padding: 0 20px;
+        text-align: center;
+    }
+    .about__visual {
+        display: none;
+        /* Hide decorative sidebar on mobile for cleaner look */
+    }
+    .about__main {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .about__tag {
+        margin-bottom: 20px;
+    }
+    .about__hero-title {
+        font-size: clamp(2rem, 10vw, 3rem);
+        /* Smaller title */
+        margin-bottom: 20px;
+    }
+    .about__description {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+    .about__footer-stats {
+        margin-top: 40px;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+    }
+    .neon-stat {
+        align-items: center;
+        border-left: none;
+        border-top: 2px solid #9163e0;
+        padding-left: 0;
+        padding-top: 10px;
+    }
+    .n-value {
+        font-size: 2rem;
+    }
+}
